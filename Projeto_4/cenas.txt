@@ -1,0 +1,28 @@
+[10|5|35|80] -> [10|35|5|80]
+
+Amplitude = altura max - altura min (80-5=75)
+
+Mediana = (35-10)/2 = 22 use floor() for div int
+
+[13|35|70|90]
+Percentil = 4
+2/4*100 2/4*100 3/4*100 4/4*100
+50        50      75      100
+
+
+
+4.1
+S1: Sem sort
+S2: Sort elementar
+O(n2)
+insertion sort most efficient
+selection sort meh
+bubble sort worst 
+
+
+4.2
+S3: Quick sort optimizado nlogn
+
+
+4.3
+S4: Sort O(n) 
