@@ -1,6 +1,3 @@
-"""
-integers ranging from 0 - 10k
-"""
 from math import floor
 from sys import stdin, stdout
 
@@ -49,7 +46,7 @@ def percentil(matrix, n):
         for j in matrix:
             if i > j:
                 aux += 1
-        res = floor((aux / n) * 100)
+        res = floor((aux / len(matrix)) * 100)
         results.append(res)
         aux = 0
     return results
@@ -57,10 +54,15 @@ def percentil(matrix, n):
 
 # quicksort a ir por metade dos caminhos
 # usar a mediana entre o primeiro o do meio e o do fim como pivot
-def mediana(matrix):
-    print('mediana')
-    print(matrix)
-    return 1
+def calc_mediana(matrix):
+    index = len(matrix) - 1
+    matrix.sort()
+    if len(matrix) % 2 == 0:
+        res = matrix[index//2] + matrix[(index//2) + 1]
+        res //= 2
+    else:
+        res = matrix[index//2]
+    print(res)
 
 
 def main():
@@ -69,7 +71,6 @@ def main():
     while op[0] != "TCHAU":
         if op[0] == "RASTER":
             m = read_matrix(op[1], op[2])
-            print(m)
 
         elif op[0] == "AMPLITUDE":
             amp = calculate_amplitude(m)
@@ -84,8 +85,7 @@ def main():
                     print(percentil_values[i])
 
         elif op[0] == "MEDIANA":
-            median = mediana(m)
-            out_ln(median)
+            calc_mediana(m)
 
         op = read_ln()
 
