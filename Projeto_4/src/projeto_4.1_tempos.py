@@ -1,5 +1,26 @@
+from random import randrange
+from time import time
 from math import floor
 from sys import stdin, stdout
+
+
+def tempos():
+    list = [25000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000]
+    for NUM in list:
+        file = open('tempos_4.1.txt', 'a')
+        file.write("--- Valores pra" + str(NUM) + "---")
+        print("--- Valores pra %d ---" % NUM)
+        for f in range(3):
+            raster = [randrange(0, 10000) for _ in range(NUM)]
+            perc = [randrange(0, 10000) for _ in range(NUM)]
+            tic = time()
+            for i in range(NUM):
+                percentil(raster, perc)
+            toc = time()
+            t = toc - tic
+            file.write("---" + str(t) + "seg ---")
+            print("--- %f seg ---" % (toc - tic))
+        print()
 
 
 def read_ln():
@@ -36,19 +57,20 @@ def calculate_amplitude(matrix):
     return amp
 
 
-def percentil(matrix, n):
-    input_array = []
+def percentil(matrix, arr):
+    # input_array = []
     results = []
-    for x in read_ln():
-        input_array.append(int(x))
+    # for x in read_ln():
+    #     input_array.append(int(x))
     aux = 0
-    for i in input_array:
+    for i in arr:
         for j in matrix:
             if i > j:
                 aux += 1
         res = floor((aux / len(matrix)) * 100)
         results.append(res)
         aux = 0
+    print('Done')
     return results
 
 
@@ -66,6 +88,7 @@ def calc_mediana(matrix):
 
 
 def main():
+    """
     m = []
     op = read_ln()
     while op[0] != "TCHAU":
@@ -88,6 +111,9 @@ def main():
             calc_mediana(m)
 
         op = read_ln()
+    """
+    tempos()
+
 
 
 if __name__ == "__main__":
